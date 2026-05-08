@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+const leadNoteSchema = new mongoose.Schema({
+  lead: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Lead',
+    required: true,
+  },
+  note: {
+    type: String,
+    required: true,
+  },
+  followUpDate: Date,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+}, {
+  timestamps: true,
+});
+
+module.exports = mongoose.model('LeadNote', leadNoteSchema);
